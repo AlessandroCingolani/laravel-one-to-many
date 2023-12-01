@@ -40,7 +40,7 @@
                 <div class="form-floating mb-5">
                     <textarea class="form-control" placeholder="Project description *" id="description" name="description"
                         style="height: 200px">{{ old('description', $project?->description) }}</textarea>
-                    <label for="description">Description project *</label>
+
                     @error('description')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
@@ -64,13 +64,12 @@
                 <div class="mb-3">
                     <label for="image" class="form-label">Immagine</label>
                     <input id="image" class="form-control @error('image') is-invalid @enderror" name="image"
-                        type="file" value="{{ old('image', $project?->image) }}">
+                        type="file" onchange="showUpload(event)" value="{{ old('image', $project?->image) }}">
                     @error('image')
                         <p class="text-danger">{{ $image }}</p>
                     @enderror
-                    @if ($project)
-                        <img width="150" src="{{ asset('storage/' . $project->image) }}" />
-                    @endif
+                    <img id="thumb" width="150" onerror="this.src='/img/placeholder.webp'"
+                        src="{{ asset('storage/' . $project?->image) }}" />
                 </div>
 
 
@@ -79,5 +78,17 @@
 
             </form>
         </div>
+        <script>
+            ClassicEditor
+                .create(document.querySelector('#description'))
+                .catch(error => {
+                    console.error(error);
+                });
+
+            function showUpload(event) {
+                const thumb = document.getElementById('thumb');
+                thumb.src = URL.createObjectURL(event.target.files[0]);
+            }
+        </script>
     </div>
 @endsection
