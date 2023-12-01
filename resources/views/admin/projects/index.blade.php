@@ -18,7 +18,7 @@
                 <th scope="col">Name project</th>
                 <th scope="col">Start date</th>
                 <th scope="col">End date</th>
-                <th scope="col">Tech</th>
+                <th scope="col">Type</th>
                 <th class="text-center" scope="col">Actions</th>
             </tr>
         </thead>
@@ -29,7 +29,7 @@
                     <td>{{ $project->name }}</td>
                     <td>{{ Helper::formatDate($project->start_date) }}</td>
                     <td>{{ isset($project->end_date) ? "$project->end_date" : 'Work in progress' }}</td>
-                    <td>{{ $project->technology?->name ?? '-' }}</td>
+                    <td>{{ $project->type?->name ?? '-' }}</td>
                     <td class="text-center">
                         <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-success"> <i
                                 class="fa-solid fa-circle-info"></i></a>
