@@ -21,6 +21,7 @@
             <form action="{{ $route }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method($method)
+
                 <div class="mb-3">
                     <label for="name" class="form-label">Name project *</label>
                     <input id="name" class="form-control @error('name') is-invalid @enderror" name="name"
@@ -29,6 +30,17 @@
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
+
+                <div class="mb-3">
+                    <select name="type_id" class="form-select" id="type_id">
+                        <option value="">Select type</option>
+                        @foreach ($types as $type)
+                            {{ old('type_id', $project?->type_id) == $type->id ? 'selected' : '' }}
+                            <option value="{{ $type->id }}">{{ $type->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
                 <div class="mb-3">
                     <label for="link" class="form-label">Link project*</label>
                     <input id="link" class="form-control @error('link') is-invalid @enderror" name="link"
@@ -37,6 +49,7 @@
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
+
                 <div class="form-floating mb-5">
                     <textarea class="form-control" placeholder="Project description *" id="description" name="description"
                         style="height: 200px">{{ old('description', $project?->description) }}</textarea>
@@ -45,6 +58,7 @@
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
+
                 <div class="mb-3">
                     <label for="start_date" class="form-label fw-bold">Start date </label>
                     <input type="date" class="form-control @error('start_date') is-invalid @enderror" id="start_date"
@@ -53,6 +67,7 @@
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
+
                 <div class="mb-3">
                     <label for="end_date" class="form-label fw-bold">End Date </label>
                     <input type="date" class="form-control @error('end_date') is-invalid @enderror" id="end_date"
@@ -61,6 +76,7 @@
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
+
                 <div class="mb-3">
                     <label for="image" class="form-label">Immagine</label>
                     <input id="image" class="form-control @error('image') is-invalid @enderror" name="image"
