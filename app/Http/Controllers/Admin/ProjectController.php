@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Type;
 use App\Functions\Helper;
 use App\Http\Requests\ProjectRequest;
 use Illuminate\Support\Facades\Storage;
@@ -33,7 +34,8 @@ class ProjectController extends Controller
         $method = 'POST';
         $route = route('admin.projects.store');
         $project = null;
-        return view('admin.projects.create-edit', compact('title', 'method', 'route', 'project'));
+        $types = Type::all();
+        return view('admin.projects.create-edit', compact('title', 'method', 'route', 'project', 'types'));
     }
 
     /**
@@ -87,7 +89,8 @@ class ProjectController extends Controller
         $title = 'Modify Project';
         $method = 'PUT';
         $route = route('admin.projects.update', $project);
-        return view('admin.projects.create-edit', compact('title', 'method', 'route', 'project'));
+        $types = Type::all();
+        return view('admin.projects.create-edit', compact('title', 'method', 'route', 'project', 'types'));
     }
 
     /**
@@ -136,7 +139,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        if($project->image){
+        if ($project->image) {
             Storage::disk('public')->delete($project->image);
         }
 
