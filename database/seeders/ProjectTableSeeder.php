@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use App\Models\Project;
 use App\Functions\Helper;
-use App\Models\Technology;
+use App\Models\Type;
 
 class ProjectTableSeeder extends Seeder
 {
@@ -20,7 +20,7 @@ class ProjectTableSeeder extends Seeder
     {
         for ($i = 0; $i < 10; $i++) {
             $new_project = new Project();
-            $new_project->technology_id = Technology::inRandomOrder()->first()->id;
+            $new_project->type_id = Type::inRandomOrder()->first()->id;
             $new_project->name = $faker->sentence();
             $new_project->slug = Helper::generateSlug($new_project->name, Project::class);
             $new_project->start_date = $faker->date();
