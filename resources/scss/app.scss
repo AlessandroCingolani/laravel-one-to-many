@@ -33,17 +33,24 @@ aside {
         list-style: none;
         padding-top: 30px;
         li {
+            i {
+                margin-right: 10px;
+            }
             padding-left: 18px;
-            height: 30px;
+            height: 40px;
         }
         a {
             color: white;
             text-decoration: none;
             padding: 8px 15px;
             border-radius: 10px;
+            &.active{
+                background-color: green;
+            }
             &:hover{
                 background-color: green;
             }
         }
     }
 }
+
