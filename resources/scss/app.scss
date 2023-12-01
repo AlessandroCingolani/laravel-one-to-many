@@ -21,6 +21,10 @@ header {
     }
 }
 
+.ck-editor__editable[role="textbox"] {
+
+    min-height: 200px;
+}
 
 aside {
     width:250px;
