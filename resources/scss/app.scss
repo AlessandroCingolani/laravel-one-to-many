@@ -1,0 +1,45 @@
+@import '~bootstrap/scss/bootstrap';
+
+header {
+    height: 60px;
+}
+
+
+.main-wrapper{
+    height: calc(100vh - 60px);
+    .container-fluid {
+        height: 100%;
+        overflow-y: auto;
+        .form-hidden{
+            width: 100%;
+            border: none;
+            &:focus{
+                border:none;
+                outline: none;
+            }
+        }
+    }
+}
+
+
+aside {
+    width:250px;
+    height:100%;
+    ul {
+        list-style: none;
+        padding-top: 30px;
+        li {
+            padding-left: 18px;
+            height: 30px;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 10px;
+            &:hover{
+                background-color: green;
+            }
+        }
+    }
+}
