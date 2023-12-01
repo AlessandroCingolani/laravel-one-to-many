@@ -18,6 +18,7 @@ class Project extends Model
     protected $fillable = [
         'name',
         'slug',
+        'type_id',
         'start_date',
         'end_date',
         'link',
