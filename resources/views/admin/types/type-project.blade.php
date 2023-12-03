@@ -3,8 +3,8 @@
 @section('content')
     <h1>List Type with related projects</h1>
 
-    <table class="table">
-        <thead>
+    <table class="table table-bordered border-success">
+        <thead class="table-success">
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Type</th>
