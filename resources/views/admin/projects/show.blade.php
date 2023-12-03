@@ -5,7 +5,8 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h3>{{ $project->name }}</h3>
+    <h3>{{ $project->name }} <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-warning"><i
+                class="fa-solid fa-pencil"></i></a></h3>
     @if ($project->type)
         <p>Type name:<strong>{{ $project->type->name }}</strong></p>
     @endif
