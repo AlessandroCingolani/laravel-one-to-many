@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Type;
 use Illuminate\Support\Str;
+use App\Functions\Helper;
 
 class TypeController extends Controller
 {
@@ -85,9 +86,31 @@ class TypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Type $type)
     {
-        //
+        $val_data = $request->validate([
+            'name' => 'required|min:2|max:30',
+        ], [
+            'name.required' => 'Name is required',
+            'name.min' => 'Name is must be more than :min characters',
+            'name.max' => 'Name must be less than :max characters'
+        ]);
+
+
+        $exist = Type::where('name', $request->name)->first();
+        if ($exist) {
+            return redirect()->route('admin.types.index')->with('error', 'Type already exists');
+        }
+
+
+        $val_data['slug'] = Helper::generateSlug($request->name, Type::class);
+
+
+
+        $type->update($val_data);
+
+
+        return redirect()->route('admin.types.index')->with('success', 'Type updated successfully');
     }
 
     /**

@@ -34,9 +34,19 @@
                 <tbody>
                     @foreach ($types as $type)
                         <tr>
-                            <td>{{ $type->name }}</td>
+                            <td>
+                                <form action="{{ route('admin.types.update', $type) }}" method="POST"
+                                    id="form-edit-type-<?= $type->id ?>">
+
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="text" class="form-hidden" value="{{ $type->name }}" name="name" />
+                                </form>
+
+                            </td>
                             <td class="text-center">
-                                <a class="btn btn-warning" href="#"><i class="fa-solid fa-pencil"></i></a>
+                                <button onclick="submitForm('form-edit-type-<?= $type->id ?>')" class="btn btn-warning"><i
+                                        class="fa-solid fa-pencil"></i></button>
                                 @include('admin.partials.formDelete', [
                                     'route' => route('admin.types.destroy', $type),
                                     'message' => 'Sicuro di eliminare questo type?',
@@ -51,4 +61,10 @@
             </table>
         </div>
     </div>
+    <script>
+        function submitForm(id) {
+            const form = document.getElementById(id);
+            form.submit();
+        }
+    </script>
 @endsection
