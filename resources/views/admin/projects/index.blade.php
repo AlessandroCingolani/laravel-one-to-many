@@ -48,5 +48,7 @@
 
         </tbody>
     </table>
-    {{ $projects->links() }}
+    <div class="paginator w-50">
+        {{ $projects->links() }}
+    </div>
 @endsection
