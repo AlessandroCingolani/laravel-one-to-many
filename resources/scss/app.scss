@@ -5,7 +5,6 @@ header {
 }
 
 
-
 .main-wrapper{
     height: calc(100vh - 60px);
     .container-fluid {
@@ -13,6 +12,7 @@ header {
             font-family: Arial, Helvetica, sans-serif;
             color: green;
             margin-bottom: 20px;
+            font-weight: 600;
         }
         background-color: rgb(240, 240, 241);
         height: 100%;
