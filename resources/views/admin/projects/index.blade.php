@@ -11,8 +11,8 @@
             {{ session('success') }}
         </div>
     @endif
-    <table class="table table-bordered">
-        <thead>
+    <table class="table table-bordered border-success">
+        <thead class="table-success">
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Name project</th>
@@ -28,7 +28,7 @@
                     <td>{{ $project->id }}</td>
                     <td>{{ $project->name }}</td>
                     <td>{{ Helper::formatDate($project->start_date) }}</td>
-                    <td>{{ isset($project->end_date) ? "$project->end_date" : 'Work in progress' }}</td>
+                    <td>{{ isset($project->end_date) ? Helper::formatDate($project->end_date) : 'Work in progress' }}</td>
                     <td>{{ $project->type?->name ?? '-' }}</td>
                     <td class="text-center">
                         <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-success"> <i
