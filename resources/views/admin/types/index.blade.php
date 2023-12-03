@@ -24,8 +24,8 @@
                 </div>
             </form>
 
-            <table class="table table-bordered">
-                <thead>
+            <table class="table table-bordered border-success">
+                <thead class="table-success">
                     <tr>
                         <th scope="col">Name type</th>
                         <th class="text-center" scope="col">Actions</th>
