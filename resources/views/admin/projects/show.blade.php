@@ -10,6 +10,14 @@
     @if ($project->type)
         <p>Type name:<strong>{{ $project->type->name }}</strong></p>
     @endif
+    <p>
+        <strong>Tech:</strong>
+        @forelse ($project->technologies as $technology)
+            {{ $technology->name }}
+        @empty
+            -
+        @endforelse
+    </p>
     <div class="w-25">
         <img class="img-fluid" src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}">
         <p>{{ $project->image_original_name }}</p>
