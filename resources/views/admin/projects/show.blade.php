@@ -8,7 +8,7 @@
     <h3>{{ $project->name }} <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-warning"><i
                 class="fa-solid fa-pencil"></i></a></h3>
     @if ($project->type)
-        <p>Type name:<strong>{{ $project->type->name }}</strong></p>
+        <p><strong>Type name:</strong> {{ $project->type->name }}</p>
     @endif
     <p>
         <strong>Tech:</strong>
