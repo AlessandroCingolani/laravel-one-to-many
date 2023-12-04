@@ -32,7 +32,8 @@
                     <td>{{ isset($project->end_date) ? Helper::formatDate($project->end_date) : 'Work in progress' }}</td>
                     <td>
                         @forelse ($project->technologies as $technology)
-                            {{ $technology->name }}
+                            <a class="badge text-bg-info text-decoration-none"
+                                href="{{ route('admin.project-technology', $technology) }}">{{ $technology->name }}</a>
                         @empty
                             -
                         @endforelse
