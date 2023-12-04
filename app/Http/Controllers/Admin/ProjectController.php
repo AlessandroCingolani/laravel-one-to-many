@@ -107,7 +107,7 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(ProjectRequest $request, Project $project)
     {
         $form_data = $request->all();
         if ($form_data['name'] != $project->name) {
