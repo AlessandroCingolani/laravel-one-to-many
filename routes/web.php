@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TechnologyController;
 use App\Http\Controllers\Admin\TypeController;
+use App\Models\Technology;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -37,7 +38,10 @@ Route::middleware(['auth', 'verified'])
         Route::resource('projects', ProjectController::class);
         Route::resource('technologies', TechnologyController::class);
         Route::resource('types', TypeController::class);
+
+        // rotte custome
         Route::get('type-project', [TypeController::class, 'typeProject'])->name('type-project');
+        Route::get('project-technology/{technology}', [TechnologyController::class, 'projectsTechnologies'])->name('project-technology');
     });
 
 require __DIR__ . '/auth.php';
